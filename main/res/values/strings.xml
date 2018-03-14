@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CourtApplication</string>
+    <string name="font_family">times new roman</string>
+    <string name="font_style">Bold</string>
+</resources>
