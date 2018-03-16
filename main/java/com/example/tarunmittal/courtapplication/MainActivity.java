@@ -9,7 +9,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     Button h1,h2,h3,h4,a1,a2,a3,a4,b7;
-
+TextView scoreA,scoreB;
     int scorecard=0;
     int scorecard2=0;
     @Override
@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         a1= (Button) findViewById(R.id.touchdownB);
         a2= (Button) findViewById(R.id.fieldgoalB);
         a3= (Button) findViewById(R.id.extrapointB);
+         scoreA= (TextView) findViewById(R.id.text1);
+
+           scoreB= (TextView) findViewById(R.id.text2);
 
 
         h1.setOnClickListener(new View.OnClickListener() {
@@ -100,14 +103,27 @@ public class MainActivity extends AppCompatActivity {
 
     private void displayA(int scores)
     {
-     TextView scoreA= (TextView) findViewById(R.id.text1);
-scoreA.setText(String.valueOf(scores));
+  scoreA.setText(String.valueOf(scores));
     }
 
     private void displayB(int scored)
     {
-     TextView   scoreB= (TextView) findViewById(R.id.text2);
-scoreB.setText(String.valueOf(scored));
+ scoreB.setText(String.valueOf(scored));
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("SCORE",(String)scoreA.getText());
+        outState.putString("SCORE1",(String)scoreB.getText());
+
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        scoreA.setText(savedInstanceState.getString("SCORE"));
+        scoreB.setText(savedInstanceState.getString("SCORE1"));
+    }
 }
